@@ -5,14 +5,10 @@
       "runtime": "python3.12"
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
+      "source": "/((?!api|_next|favicon.ico).*)",
+      "destination": "/public/$1"
     }
   ],
   "headers": [
