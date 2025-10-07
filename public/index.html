@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolam Pattern Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>Kolam Pattern Generator</h1>
+            <p>Create beautiful geometric patterns inspired by traditional Indian Kolam art</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Parameters Panel -->
+            <div class="parameters-panel">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Parameters</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="kolamForm">
+                            <!-- ND Parameter -->
+                            <div class="form-group">
+                                <label class="form-label" for="ndSlider">
+                                    Grid Dimension (ND): <span id="ndValue">19</span>
+                                </label>
+                                <input type="range" id="ndSlider" class="slider" min="5" max="25" value="19" step="2">
+                                <small class="form-help">Must be odd numbers (5-25)</small>
+                            </div>
+
+                            <!-- Sigma Reference -->
+                            <div class="form-group">
+                                <label class="form-label" for="sigmaSlider">
+                                    Sigma Reference: <span id="sigmaValue">0.65</span>
+                                </label>
+                                <input type="range" id="sigmaSlider" class="slider" min="0.0" max="1.0" value="0.65" step="0.05">
+                                <small class="form-help">Controls pattern density (0.0-1.0)</small>
+                            </div>
+
+                            <!-- Boundary Type -->
+                            <div class="form-group">
+                                <label class="form-label" for="boundaryType">Boundary Type</label>
+                                <select id="boundaryType" class="form-control">
+                                    <option value="diamond">Diamond</option>
+                                    <option value="corners">Corners</option>
+                                    <option value="fish">Fish</option>
+                                    <option value="waves">Waves</option>
+                                    <option value="fractal">Fractal</option>
+                                    <option value="organic">Organic</option>
+                                </select>
+                                <small class="form-help">Shape of the boundary pattern</small>
+                            </div>
+
+                            <!-- Theme -->
+                            <div class="form-group">
+                                <label class="form-label">Theme</label>
+                                <div class="toggle-switch">
+                                    <input type="radio" id="themeLight" name="theme" value="light" checked>
+                                    <label for="themeLight">Light</label>
+                                    <input type="radio" id="themeDark" name="theme" value="dark">
+                                    <label for="themeDark">Dark</label>
+                                </div>
+                            </div>
+
+                            <!-- Kolam Color -->
+                            <div class="form-group">
+                                <label class="form-label" for="kolamColor">Kolam Color</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="kolamColor" class="color-input" value="#e377c2">
+                                    <span class="color-value" id="colorValue">#e377c2</span>
+                                </div>
+                                <small class="form-help">Primary color for the pattern</small>
+                            </div>
+
+                            <!-- One Stroke Option -->
+                            <div class="form-group">
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="oneStroke" class="checkbox">
+                                    <label for="oneStroke" class="checkbox-label">Complete One-Stroke Kolam</label>
+                                </div>
+                                <small class="form-help">Generate patterns that can be drawn in one continuous stroke</small>
+                            </div>
+
+                            <!-- Generate Button -->
+                            <button type="submit" class="btn btn--primary btn--full-width" id="generateBtn">
+                                <span class="btn-text">🎨 Generate Kolam</span>
+                                <span class="btn-loading hidden">Generating...</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Panel -->
+            <div class="preview-panel">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Preview</h2>
+                        <button class="btn btn--outline btn--sm" id="downloadBtn" disabled>Download PNG</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="preview-area" id="previewArea">
+                            <div class="preview-placeholder">
+                                <div class="placeholder-icon">
+                                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                        <path d="m12 2-3 3-7-7 3 3"></path>
+                                        <path d="m8 5 2-2 7 7-2 2"></path>
+                                    </svg>
+                                </div>
+                                <p>Click "Generate Kolam" to create your pattern</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Traditional Indian Kolam patterns generated algorithmically. Adjust parameters to explore different designs.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
